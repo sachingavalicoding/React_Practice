@@ -1,41 +1,37 @@
 import './App.css';
-const friends = [
-  {
-    key: 1,
-    name: "Sachin",
-    age:20,
-    pass:true
-  },
-  {
-    key: 2,
-    name: "Nikhil",
-    age:25,
-    pass:true
-  },
-  {
-    key:3,
-    name:"Rahul",
-    age:19,
-    pass:false
-  }
-
-];
+import { useState} from 'react';
 function App() {
-  const listItems = friends.map(e =>
-    <li key={e.key}
-     style ={{
-        color : e.pass === true ? 'green' : 'red',
-        backgroundColor: e.age <= 20 ? 'blue' : 'black',
-        padding:e.key <= 5 ? '30px 50px' : '0px'
-     }}
-     >
-      {e.name}
-    </li>
-  );
+  const [count , setCount] = useState(0);
+  const add = ()=>{
+    setCount(count + 1 );
+  }
+  const sub = ()=>{
+    setCount(count - 1 );
+  }
   return (
-    <ul>
-      {listItems}
-    </ul>
+   <div className='main'>
+       <button onClick={add}
+        style={{
+          padding:'20px 30px',
+          color:'red',
+          backgroundColor:'black',
+          border:'none',
+          borderRadius:'10px',
+          fontSize:'50px'
+        }}
+        >  + </button>
+        <span>{count} </span>
+       <button onClick={sub}
+        style={{
+          padding:'20px 30px',
+          color:'red',
+          backgroundColor:'black',
+          border:'none',
+          borderRadius:'10px',
+          fontSize:'50px'
+        }}
+        >  - </button>
+   </div>
   );
 }
 
